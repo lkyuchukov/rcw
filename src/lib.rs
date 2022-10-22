@@ -3,7 +3,7 @@ use std::{error::Error, fs};
 use comfy_table::{
     modifiers::{UTF8_ROUND_CORNERS, UTF8_SOLID_INNER_BORDERS},
     presets::UTF8_FULL,
-    Attribute, Cell, CellAlignment, ContentArrangement, Table, Color,
+    Attribute, Cell, CellAlignment, ContentArrangement, Table,
 };
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
@@ -20,10 +20,10 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
         .apply_modifier(UTF8_ROUND_CORNERS)
         .set_content_arrangement(ContentArrangement::Dynamic)
         .set_header(vec![
-            Cell::new("Lines").add_attribute(Attribute::Bold).fg(Color::DarkCyan),
-            Cell::new("Words").add_attribute(Attribute::Bold).fg(Color::DarkCyan),
-            Cell::new("Bytes").add_attribute(Attribute::Bold).fg(Color::DarkCyan),
-            Cell::new("Filename").add_attribute(Attribute::Bold).fg(Color::DarkCyan),
+            Cell::new("Lines").add_attribute(Attribute::Bold),
+            Cell::new("Words").add_attribute(Attribute::Bold),
+            Cell::new("Bytes").add_attribute(Attribute::Bold),
+            Cell::new("Filename").add_attribute(Attribute::Bold),
         ])
         .add_row(vec![
             Cell::new(line_count.to_string()).set_alignment(CellAlignment::Right),
