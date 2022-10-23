@@ -1,6 +1,6 @@
 use std::{env, process};
 
-use rwc::{run, Config};
+use rcw::{run, Config};
 
 fn main() {
     let args: Vec<String> = env::args().collect();

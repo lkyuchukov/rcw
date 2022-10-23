@@ -1,6 +1,6 @@
-# rwc
+# rcw
 
 ```wc``` in Rust
 
 ## Usage
-![rwc1](https://user-images.githubusercontent.com/45465568/197397286-5b642a7d-4db4-4859-bad1-b6f5842c2ad8.png)
+![rcw2](https://user-images.githubusercontent.com/45465568/197398208-a691bc86-5a63-4f84-acf9-935483f004b4.png)
