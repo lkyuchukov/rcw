@@ -12,6 +12,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let line_count = count_lines(&contents);
     let word_count = count_words(&contents);
     let byte_count = count_bytes(&contents);
+    let char_count = count_chars(&contents);
 
     let mut table = Table::new();
     table
@@ -29,6 +30,9 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
             Cell::new("Bytes")
                 .add_attribute(Attribute::Bold)
                 .set_alignment(CellAlignment::Left),
+            Cell::new("Chars")
+                .add_attribute(Attribute::Bold)
+                .set_alignment(CellAlignment::Left),
             Cell::new("File")
                 .add_attribute(Attribute::Bold)
                 .set_alignment(CellAlignment::Left),
@@ -37,6 +41,7 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
             Cell::new(line_count.to_string()).set_alignment(CellAlignment::Left),
             Cell::new(word_count.to_string()).set_alignment(CellAlignment::Left),
             Cell::new(byte_count.to_string()).set_alignment(CellAlignment::Left),
+            Cell::new(char_count.to_string()).set_alignment(CellAlignment::Left),
             Cell::new(config.file_path).set_alignment(CellAlignment::Left),
         ]);
     println!("{table}");
@@ -53,15 +58,11 @@ pub fn count_bytes<'a>(contents: &'a str) -> usize {
 }
 
 pub fn count_words<'a>(contents: &'a str) -> usize {
-    let mut word_count = 0;
-    let contents = contents.trim_end();
-    for ch in contents.chars() {
-        if ch.is_whitespace() {
-            word_count += 1;
-        }
-    }
+    contents.split_whitespace().count()
+}
 
-    return word_count;
+pub fn count_chars<'a>(contents: &'a str) -> usize {
+    contents.chars().count()
 }
 
 pub struct Config {
@@ -78,4 +79,39 @@ impl Config {
 
         Ok(Config { file_path })
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn count_lines_test() {
+        let contents = "\
+        The quick brown fox
+        jumped over the lazy dog.
+        If the dog moved,
+        was it really lazy ?";
+
+        assert_eq!(count_lines(contents), 4);
+    }
+
+    #[test]
+    fn count_bytes_test() {
+        let contents = "The quick brown fox jumped over the lazy dog.";
+        assert_eq!(count_bytes(contents), 45);
+    }
+
+    #[test]
+    fn count_words_test() {
+        let contents = "The quick brown fox jumped over the lazy dog.";
+        assert_eq!(count_words(contents), 9);
+    }
+
+    #[test]
+    fn count_chars_test() {
+        let contents = "The quick brown fox jumped over the lazy dog.";
+        assert_eq!(count_words(contents), 9);
+    }
+
 }
