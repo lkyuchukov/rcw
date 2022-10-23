@@ -1,11 +1,11 @@
 [package]
-name = "rwc"
+name = "rcw"
 authors = ["Lyubomir Kyuchukov"]
 license = "MIT"
 description = "wc in Rust"
 readme = "README.md"
-homepage = "https://github.com/lkyuchukov/rwc"
-repository = "https://github.com/lkyuchukov/rwc"
+homepage = "https://github.com/lkyuchukov/rcw"
+repository = "https://github.com/lkyuchukov/rcw"
 keywords = ["cli", "wc"]
 categories = ["command-line-utilities"]
 version = "0.2.0"
