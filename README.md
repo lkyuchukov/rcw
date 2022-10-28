@@ -3,8 +3,15 @@
 ```wc``` in Rust
 
 ## Installation
+With cargo:
 ```shell
 cargo install rcw
+```
+
+With Homebrew:
+```shell
+brew tap lkyuchukov/rcw
+brew install rcw
 ```
 
 ## Usage
