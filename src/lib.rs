@@ -71,10 +71,6 @@ pub struct Config {
 
 impl Config {
     pub fn build(args: &[String]) -> Result<Config, &'static str> {
-        if args.len() < 1 {
-            panic!("not enough arguments");
-        }
-
         let file_path = args[1].clone();
 
         Ok(Config { file_path })

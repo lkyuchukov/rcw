@@ -5,6 +5,11 @@ use rcw::{run, Config};
 fn main() {
     let args: Vec<String> = env::args().collect();
 
+    if args.len() < 2 {
+        eprintln!("not enough arguments");
+        return
+    }
+
     let config = Config::build(&args).unwrap_or_else(|err| {
         eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
